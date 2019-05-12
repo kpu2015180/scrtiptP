@@ -12,6 +12,8 @@ class SearchState():
         pass
     def searchD(self):
         pass
+    def searchA(self):
+        pass
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
@@ -29,10 +31,13 @@ class SearchState():
         c3.place(x=410, y=50)
         c3.set("구")
 
-        
-        Button(self.window,command=self.searchD,text="  검색  ").place(x=580,y=45)
+        e1=Entry(self.window,width=50)
+        e1.place(x=120,y=90)
 
-        #Label(self.window,text="대피소", font=('Times New Roman', 40)).pack()
+        Button(self.window,command=self.searchA,text="  지역검색  ",bg="red").place(x=580,y=45)
+        Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow').place(x=580, y=85)
+        l1=Label(self.window,width=45,height=15,bg='white')
+        l1.place(x=70,y=140)
         mainloop()
     def exit(self):
         self.window.destroy()
