@@ -16,7 +16,16 @@ class SearchState():
         self.window.title('SearchState')
         self.window.geometry('700x500')
 
-        C1=ttk.Combobox(self.window,width=10,height=30,values=name).place(x=100,y=50)
+        C1=ttk.Combobox(self.window,width=15,height=30,values=name)
+        C1.place(x=30,y=50)
+        C1.set("지역")
+
+        C1 = ttk.Combobox(self.window, width=15, height=30, values=name)
+        C1.place(x=30, y=50)
+        C1.set("지역")
+
+        C1 = ttk.Combobox(self.window, width=15, height=30, values=name)
+        C1.place(x=30, y=50)
         C1.set("지역")
         #Label(self.window,text="대피소", font=('Times New Roman', 40)).pack()
         mainloop()
