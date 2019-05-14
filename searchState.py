@@ -14,6 +14,8 @@ class SearchState():
         pass
     def searchA(self):
         pass
+    def ma(self):
+        print(12)
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
@@ -27,7 +29,7 @@ class SearchState():
         c2.place(x=240, y=50)
         c2.set("군")
 
-        c3 = ttk.Combobox(self.window, width=15, height=30, values=name)
+        c3 = ttk.Combobox(self.window, width=15, height=30, values=name, postcommand=self.ma)
         c3.place(x=410, y=50)
         c3.set("구")
 
