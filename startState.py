@@ -5,7 +5,7 @@ import searchState
 
 class StartState:
     def goSearchState(self):
-
+        self.window.destroy()
         framework.push_state(searchState.SearchState())
         pass
     def goBookMarkState(self):
@@ -44,7 +44,6 @@ class StartState:
         d = Button(self.window, text="즐겨찾기", command=self.goBookMarkState, font=('Times New Roman', 15))
         d.place(x=100, y=200)
         mainloop()
-
+        framework.quit()
     def exit(self):
-        self.window.destroy()
         pass
