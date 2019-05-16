@@ -61,15 +61,15 @@ class SearchState():
         self.e1=Entry(self.window,width=50)
         self.e1.place(x=70,y=70)
         self.start=True
-        Button(self.window,command=self.searchA,text="  지역검색  ",bg="red").place(x=470,y=25)
-        Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow').place(x=470, y=65)
+        Button(self.window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
+        Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow',font = ('현대하모니 L', 10, 'bold')).place(x=470, y=65)
         self.frame=Frame(self.window,width=500,height=190,bg='white')
         self.frame.place(x=50,y=100)
         self.l1=Label(self.window,width=40,height=15,bg='white')
         self.l1.place(x=20,y=310)
         self.l2=Label(self.window,width=35,height=10,bg='white')
         self.l2.place(x=320,y=310)
-        Button(self.window,command=self.addList,width=34,height=4,text=" 즐겨찾기 추가 ",bg='green').place(x=320,y=470)
+        Button(self.window,command=self.addList,width=20,height=1,text="즐겨찾기 추가",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=320,y=480)
 
         mainloop()
         framework.pop_state()
