@@ -17,6 +17,10 @@ class SearchState():
         pass
     def addList(self):
         pass
+    def sendMail(self):
+        pass
+    def selectValue(self):
+        pass
     def func1(self):
         self.c2.set('구/군')
         self.c3.set('읍/면/동')
@@ -46,19 +50,19 @@ class SearchState():
         self.str2 = StringVar()
         self.str3 = StringVar()
 
-        self.c1=ttk.Combobox(self.window,textvariable=self.str1,width=15,height=30,postcommand=self.func1,values=list(self.dic.keys()))
-        self.c1.place(x=20,y=30)
+        self.c1=ttk.Combobox(self.window,textvariable=self.str1,width=13,height=30,postcommand=self.func1,values=list(self.dic.keys()))
+        self.c1.place(x=50,y=30)                 # 시/도 콤보박스
         self.c1.set("시/도")
 
-        self.c2 = ttk.Combobox(self.window,textvariable=self.str2, width=15, height=30,postcommand=self.func2)
-        self.c2.place(x=170, y=30)
+        self.c2 = ttk.Combobox(self.window,textvariable=self.str2, width=13, height=30,postcommand=self.func2)
+        self.c2.place(x=190, y=30)              #구/군 콤보박스
         self.c2.set("구/군")
 
-        self.c3 = ttk.Combobox(self.window, textvariable=self.str3,width=15, height=30,postcommand=self.func3)
-        self.c3.place(x=320, y=30)
+        self.c3 = ttk.Combobox(self.window, textvariable=self.str3,width=13, height=30,postcommand=self.func3)
+        self.c3.place(x=330, y=30)              #읍/면/동 콤보박스
         self.c3.set("읍/면/동")
 
-        self.e1=Entry(self.window,width=50)
+        self.e1=Entry(self.window,width=50)    #직접 검색란
         self.e1.place(x=70,y=70)
         self.start=True
         Button(self.window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
@@ -70,14 +74,23 @@ class SearchState():
         self.l1.place(x=50,y=310)
         self.l2=Label(self.window,width=29,height=10,bg='white')      #선택된 대피소 정보란
         self.l2.place(x=345,y=310)
-        Button(self.window,command=self.addList,width=16,height=2,text="즐겨찾기 추가",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #즐겨찾기 버튼
+        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #메일 보내기 버튼
         #----------------------------------------------------
-
-        self.frame2=Frame(self.window,bg='white',width=380,height=100)
+            # 검색 후 결과값을 출력하는 리스트 박스
+        self.frame2=Frame(self.window,bg='white',width=400,height=100)
         self.frame2.place(x=50,y=550)
         self.scrollbar=Scrollbar(self.frame2)
-        self.scrollbar.pack(side='left',fill="y")
-        #self.listbox=Listbox(self.window,yscrollcommand=)
+        self.scrollbar.pack(side='right',fill="y")
+        self.listbox=Listbox(self.frame2,width=45,height=5,yscrollcommand=self.scrollbar.set)
+        for i in range(100):
+            self.listbox.insert(i,str(i+1))
+        self.listbox.pack(side='left')
+        self.scrollbar["command"]=self.listbox.yview
+        #--------------------------------------------------------
+        Button(self.window, command=self.selectValue, width=14, height=1, text="선택", bg='gray',   #결과 값 선택 버튼
+               font=('현대하모니 L', 12, 'bold')).place(x=400, y=550)  # 즐겨찾기 버튼
+        Button(self.window, command=self.addList, width=14, height=1, text="즐겨찾기 추가", bg='gray', #즐겨찾기 버튼
+               font=('현대하모니 L', 12, 'bold')).place(x=400, y=595)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
