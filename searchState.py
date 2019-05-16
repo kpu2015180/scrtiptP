@@ -15,6 +15,8 @@ class SearchState():
         pass
     def searchA(self):
         pass
+    def addList(self):
+        pass
     def func1(self):
         self.c2.set('구/군')
         self.c3.set('읍/면/동')
@@ -64,7 +66,11 @@ class SearchState():
         self.frame=Frame(self.window,width=500,height=190,bg='white')
         self.frame.place(x=50,y=100)
         self.l1=Label(self.window,width=40,height=15,bg='white')
-        self.l1.place(x=50,y=310)
+        self.l1.place(x=20,y=310)
+        self.l2=Label(self.window,width=35,height=10,bg='white')
+        self.l2.place(x=320,y=310)
+        Button(self.window,command=self.addList,width=34,height=4,text=" 즐겨찾기 추가 ",bg='green').place(x=320,y=470)
+
         mainloop()
         framework.pop_state()
     def exit(self):
