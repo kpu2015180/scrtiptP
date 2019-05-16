@@ -33,34 +33,38 @@ class SearchState():
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
-        self.window.geometry('700x500')
+        self.window.geometry('600x700')
         f=open('시도구','rb')
         self.dic=pickle.load(f)
         f.close()
+
         self.start=False
+
         self.str1=StringVar()
         self.str2 = StringVar()
         self.str3 = StringVar()
 
         self.c1=ttk.Combobox(self.window,textvariable=self.str1,width=15,height=30,postcommand=self.func1,values=list(self.dic.keys()))
-        self.c1.place(x=70,y=30)
+        self.c1.place(x=20,y=30)
         self.c1.set("시/도")
 
         self.c2 = ttk.Combobox(self.window,textvariable=self.str2, width=15, height=30,postcommand=self.func2)
-        self.c2.place(x=240, y=30)
+        self.c2.place(x=170, y=30)
         self.c2.set("구/군")
 
         self.c3 = ttk.Combobox(self.window, textvariable=self.str3,width=15, height=30,postcommand=self.func3)
-        self.c3.place(x=410, y=30)
+        self.c3.place(x=320, y=30)
         self.c3.set("읍/면/동")
 
         self.e1=Entry(self.window,width=50)
-        self.e1.place(x=120,y=70)
+        self.e1.place(x=70,y=70)
         self.start=True
-        Button(self.window,command=self.searchA,text="  지역검색  ",bg="red").place(x=580,y=25)
-        Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow').place(x=580, y=65)
-        self.l1=Label(self.window,width=45,height=15,bg='white')
-        self.l1.place(x=70,y=120)
+        Button(self.window,command=self.searchA,text="  지역검색  ",bg="red").place(x=470,y=25)
+        Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow').place(x=470, y=65)
+        self.frame=Frame(self.window,width=500,height=190,bg='white')
+        self.frame.place(x=50,y=100)
+        self.l1=Label(self.window,width=40,height=15,bg='white')
+        self.l1.place(x=50,y=310)
         mainloop()
         framework.pop_state()
     def exit(self):
