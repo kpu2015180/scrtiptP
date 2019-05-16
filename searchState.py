@@ -33,7 +33,7 @@ class SearchState():
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
-        self.window.geometry('600x700')
+        self.window.geometry('600x700' )
         f=open('시도구','rb')
         self.dic=pickle.load(f)
         f.close()
