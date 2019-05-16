@@ -63,14 +63,21 @@ class SearchState():
         self.start=True
         Button(self.window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
         Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow',font = ('현대하모니 L', 10, 'bold')).place(x=470, y=65)
-        self.frame=Frame(self.window,width=500,height=190,bg='white')
+        self.frame=Frame(self.window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.frame.place(x=50,y=100)
-        self.l1=Label(self.window,width=40,height=15,bg='white')
-        self.l1.place(x=20,y=310)
-        self.l2=Label(self.window,width=35,height=10,bg='white')
-        self.l2.place(x=320,y=310)
-        Button(self.window,command=self.addList,width=20,height=1,text="즐겨찾기 추가",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=320,y=480)
+        #----------------------------------------------------------------------------------
+        self.l1=Label(self.window,width=40,height=15,bg='white')      #지도
+        self.l1.place(x=50,y=310)
+        self.l2=Label(self.window,width=29,height=10,bg='white')      #선택된 대피소 정보란
+        self.l2.place(x=345,y=310)
+        Button(self.window,command=self.addList,width=16,height=2,text="즐겨찾기 추가",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #즐겨찾기 버튼
+        #----------------------------------------------------
 
+        self.frame2=Frame(self.window,bg='white',width=380,height=100)
+        self.frame2.place(x=50,y=550)
+        self.scrollbar=Scrollbar(self.frame2)
+        self.scrollbar.pack(side='left',fill="y")
+        #self.listbox=Listbox(self.window,yscrollcommand=)
         mainloop()
         framework.pop_state()
     def exit(self):
