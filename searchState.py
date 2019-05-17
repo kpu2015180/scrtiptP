@@ -7,8 +7,15 @@ from bs4 import BeautifulSoup
 import framework
 import pickle
 
-
-class SearchState():
+class Shelter:
+    def __init__(self,rddr,addr,fName,longtitude,latitude):
+        self.rddr=rddr
+        self.addr=addr
+        self.facility_name=fName
+        self.longtitude=longtitude
+        self.latitude=latitude
+        pass
+class SearchState:
     def __init__(self):
         #self.window=Tk()
         #self.window.title('SearchState')
@@ -17,15 +24,28 @@ class SearchState():
         #mainloop()
         pass
     def searchD(self):
+        
+        self.itemList.clear()
         for i in range(1,19):
             url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
             response = requests.get(url)
-
+            soup = BeautifulSoup(response.text, 'html.parser')
+            Items = soup.findAll('row')
         pass
     def searchA(self):
+        s=self.e1.get()
+        self.itemList.clear()
         for i in range(1, 19):
             url = self.hp + self.key + self.pageNo + str(i) + self.type + self.numOfRows + self.flag
             response = requests.get(url)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            items = soup.findAll('row')
+            for item in items:
+                if bool(re.match(s,item.find('sisul_addr').text)):
+                    self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
+                                                 item.find('longitude').text,item.find('latitude').text))
+                    pass
+
         pass
     def addList(self):
         pass
@@ -55,6 +75,7 @@ class SearchState():
         f=open('시도구','rb')
         self.dic=pickle.load(f)
         f.close()
+        self.itemList=[]
 
         self.hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
         self.key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
