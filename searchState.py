@@ -1,8 +1,13 @@
 from tkinter import*
 from tkinter import ttk
+
+import requests
+from bs4 import BeautifulSoup
+
 import framework
 import pickle
-name=['구로구','양천구','강북구','서남구']
+
+
 class SearchState():
     def __init__(self):
         #self.window=Tk()
@@ -12,8 +17,15 @@ class SearchState():
         #mainloop()
         pass
     def searchD(self):
+        for i in range(1,19):
+            url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
+            response = requests.get(url)
+
         pass
     def searchA(self):
+        for i in range(1, 19):
+            url = self.hp + self.key + self.pageNo + str(i) + self.type + self.numOfRows + self.flag
+            response = requests.get(url)
         pass
     def addList(self):
         pass
@@ -44,6 +56,12 @@ class SearchState():
         self.dic=pickle.load(f)
         f.close()
 
+        self.hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
+        self.key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
+        self.numOfRows = '&numOfRows=1000'
+        self.pageNo = '&pageNo='  #1~18 까지 가능
+        self.type = '&type=xml'
+        self.flag = '&flag=Y'
         self.start=False
 
         self.str1=StringVar()
