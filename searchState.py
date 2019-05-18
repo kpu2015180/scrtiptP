@@ -23,16 +23,21 @@ class SearchState:
         #Label(text="대피소",font=('Times New Roman',40)).pack()
         #mainloop()
         pass
-    def searchD(self):
-        
+    def searchA(self):
+        s=self.str1.get()+' '+self.str2.get()+' '+self.str3.get()
         self.itemList.clear()
         for i in range(1,19):
             url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
             response = requests.get(url)
             soup = BeautifulSoup(response.text, 'html.parser')
-            Items = soup.findAll('row')
+            items = soup.findAll('row')
+            for item in items:
+                if bool(re.match(s,item.find('sisul_addr').text)):
+                    self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
+                                                 item.find('longitude').text,item.find('latitude').text))
+
         pass
-    def searchA(self):
+    def searchD(self):
         s=self.e1.get()
         self.itemList.clear()
         for i in range(1, 19):
@@ -44,7 +49,7 @@ class SearchState:
                 if bool(re.match(s,item.find('sisul_addr').text)):
                     self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
                                                  item.find('longitude').text,item.find('latitude').text))
-                    pass
+
 
         pass
     def addList(self):
