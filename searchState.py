@@ -26,7 +26,7 @@ class SearchState:
     def searchA(self):
         s=self.str1.get()+' '+self.str2.get()+' '+self.str3.get()
         self.itemList.clear()
-        for i in range(1,19):
+        for i in range(1,10):
             url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
             response = requests.get(url)
             soup = BeautifulSoup(response.text, 'html.parser')
@@ -35,12 +35,12 @@ class SearchState:
                 if bool(re.match(s,item.find('sisul_addr').text)):
                     self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
                                                  item.find('longitude').text,item.find('latitude').text))
-
+        self.updateListbox()
         pass
     def searchD(self):
         s=self.e1.get()
         self.itemList.clear()
-        for i in range(1, 19):
+        for i in range(1, 10):
             url = self.hp + self.key + self.pageNo + str(i) + self.type + self.numOfRows + self.flag
             response = requests.get(url)
             soup = BeautifulSoup(response.text, 'html.parser')
@@ -57,6 +57,12 @@ class SearchState:
     def sendMail(self):
         pass
     def selectValue(self):
+        pass
+    def updateListbox(self):
+        i=0
+        for item in self.itemList:
+            self.listbox.insert(i,item.addr)
+            i+=1
         pass
     def func1(self):
         self.c2.set('구/군')
@@ -84,7 +90,7 @@ class SearchState:
 
         self.hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
         self.key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
-        self.numOfRows = '&numOfRows=1000'
+        self.numOfRows = '&numOfRows=500'
         self.pageNo = '&pageNo='  #1~18 까지 가능
         self.type = '&type=xml'
         self.flag = '&flag=Y'
@@ -126,8 +132,7 @@ class SearchState:
         self.scrollbar=Scrollbar(self.frame2)
         self.scrollbar.pack(side='right',fill="y")
         self.listbox=Listbox(self.frame2,width=45,height=5,yscrollcommand=self.scrollbar.set)
-        for i in range(100):
-            self.listbox.insert(i,str(i+1))
+        
         self.listbox.pack(side='left')
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
