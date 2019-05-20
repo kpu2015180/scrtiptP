@@ -25,9 +25,10 @@ class BookMarkState:
         pass
     def deleteList(self):
         n = self.listbox.curselection()
-                shelter = self.itemList[n[0]]
-                if not framework.bookMarkList.count(shelter):
-                    framework.bookMarkList.append(shelter)
+        shelter = framework.bookMarkList[n[0]]
+        self.listbox.delete(n[0])
+        framework.bookMarkList.remove(shelter)
+
 
 
         pass
@@ -56,8 +57,8 @@ class BookMarkState:
         self.scrollbar["command"]=self.listbox.yview
         i=0
         for item in framework.bookMarkList:
-                    self.listbox.insert(i,item.addr)
-                    i+=1
+            self.listbox.insert(i,item.addr)
+            i+=1
         #--------------------------------------------------------
         Button(self.window, command=self.selectValue, width=14, height=1, text="선택", bg='gray',   #결과 값 선택 버튼
                font=('현대하모니 L', 12, 'bold')).place(x=400, y=15)  # 즐겨찾기 버튼
