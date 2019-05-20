@@ -24,7 +24,10 @@ class BookMarkState:
         #mainloop()
         pass
     def addList(self):
-        pass
+         n=self.listbox.curselection()
+         shelter=self.itemList[n[0]]
+         framework.bookMarkList.append(shelter)
+         pass
     def sendMail(self):
         pass
     def selectValue(self):
@@ -37,17 +40,16 @@ class BookMarkState:
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
-        self.window.geometry('600x700' )
+        self.window.geometry('600x600' )
 
 
-        self.frame=Frame(self.window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
-        self.frame.place(x=50,y=100)
+        self.frame=Frame(self.window,width=500,height=250,bg='white')
+        self.frame.place(x=50,y=250)
         #----------------------------------------------------------------------------------
-        self.l1=Label(self.window,width=40,height=15,bg='white')      #지도
-        self.l1.place(x=50,y=310)
-        self.l2=Label(self.window,width=29,height=10,bg='white')      #선택된 대피소 정보란
-        self.l2.place(x=345,y=310)
-        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #메일 보내기 버튼
+        self.l1=Label(self.window,width=70,height=7,bg='white')      #정보란
+        self.l1.place(x=50,y=120)
+        #--------------------------------------------------------------------------------------------
+        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=208,y=510) #메일 보내기 버튼
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(self.window,bg='white',width=400,height=100)
