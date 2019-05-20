@@ -59,7 +59,7 @@ class SearchState:
     def selectValue(self):
         n=self.listbox.curselection()
         shelter=self.itemList[n[0]]
-        self.l2.configure(text='시설명:'+str(shelter.facility_name)+'\n도로명 주소:'+shelter.rddr+'\n지번주소:'+shelter.addr)
+        self.l2.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr+'\n-지번주소-\n:'+shelter.addr)
 
         pass
     def updateListbox(self):
