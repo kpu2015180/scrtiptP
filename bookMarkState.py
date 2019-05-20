@@ -28,10 +28,16 @@ class BookMarkState:
         shelter = framework.bookMarkList[n[0]]
         self.listbox.delete(n[0])
         framework.bookMarkList.remove(shelter)
-
-
-
         pass
+    def sendMail(self):
+        pass
+    def selectValue(self):
+        n=self.listbox.curselection()
+        shelter=framework.bookMarkList[n[0]]
+        i=shelter.rddr.index('(')
+        self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
+        pass
+
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
