@@ -53,20 +53,21 @@ class SearchState:
 
         pass
     def addList(self):
-        n = self.listbox.curselection()
-        shelter = self.itemList[n[0]]
-        if not framework.bookMarkList.count(shelter):
-            framework.bookMarkList.append(shelter)
-        pass
+        if self.listbox.size():
+            n = self.listbox.curselection()
+            shelter = self.itemList[n[0]]
+            if not framework.bookMarkList.count(shelter):
+                framework.bookMarkList.append(shelter)
+            pass
     def sendMail(self):
         pass
     def selectValue(self):
-        n=self.listbox.curselection()
-        shelter=self.itemList[n[0]]
-        i=shelter.rddr.index('(')
-        self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
-
-        pass
+        if self.listbox.size():
+            n=self.listbox.curselection()
+            shelter=self.itemList[n[0]]
+            i=shelter.rddr.index('(')
+            self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
+            pass
     def updateListbox(self):
         i=0
         for item in self.itemList:
