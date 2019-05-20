@@ -1,7 +1,7 @@
 from tkinter import*
 import framework
 import searchState
-
+import bookMarkState
 
 class StartState:
     def goSearchState(self):
@@ -9,8 +9,8 @@ class StartState:
         framework.push_state(searchState.SearchState())
         pass
     def goBookMarkState(self):
-        self.exit()
         self.window.destroy()
+        framework.push_state(bookMarkState.BookMarkState())
 
         pass
     def __init__(self):

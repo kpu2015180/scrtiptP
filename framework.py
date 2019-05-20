@@ -3,7 +3,7 @@
 
 running = None
 stack = None
-
+bookMarkList=[]
 
 def change_state(state):
     global stack
