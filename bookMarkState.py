@@ -23,20 +23,14 @@ class BookMarkState:
         #Label(text="대피소",font=('Times New Roman',40)).pack()
         #mainloop()
         pass
-    def addList(self):
-         n=self.listbox.curselection()
-         shelter=self.itemList[n[0]]
-         framework.bookMarkList.append(shelter)
-         pass
-    def sendMail(self):
-        pass
-    def selectValue(self):
-        n=self.listbox.curselection()
-        shelter=self.itemList[n[0]]
-        i=shelter.rddr.index('(')
-        self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
-        pass
+    def deleteList(self):
+        n = self.listbox.curselection()
+                shelter = self.itemList[n[0]]
+                if not framework.bookMarkList.count(shelter):
+                    framework.bookMarkList.append(shelter)
 
+
+        pass
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
@@ -60,10 +54,14 @@ class BookMarkState:
         
         self.listbox.pack(side='left')
         self.scrollbar["command"]=self.listbox.yview
+        i=0
+        for item in framework.bookMarkList:
+                    self.listbox.insert(i,item.addr)
+                    i+=1
         #--------------------------------------------------------
         Button(self.window, command=self.selectValue, width=14, height=1, text="선택", bg='gray',   #결과 값 선택 버튼
                font=('현대하모니 L', 12, 'bold')).place(x=400, y=15)  # 즐겨찾기 버튼
-        Button(self.window, command=self.addList, width=14, height=1, text="즐겨찾기 삭제", bg='gray', #즐겨찾기 버튼
+        Button(self.window, command=self.deleteList, width=14, height=1, text="즐겨찾기 삭제", bg='gray', #즐겨찾기 버튼
                font=('현대하모니 L', 12, 'bold')).place(x=400, y=60)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()

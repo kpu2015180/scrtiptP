@@ -53,6 +53,10 @@ class SearchState:
 
         pass
     def addList(self):
+        n = self.listbox.curselection()
+        shelter = self.itemList[n[0]]
+        if not framework.bookMarkList.count(shelter):
+            framework.bookMarkList.append(shelter)
         pass
     def sendMail(self):
         pass
