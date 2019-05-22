@@ -24,7 +24,14 @@ class SearchState:
         #mainloop()
         pass
     def searchA(self):
-        s=self.str1.get()+' '+self.str2.get()+' '+self.str3.get()
+        if self.str1.get() == '시/도':
+            return
+        if self.str3.get()!='읍/면/동':
+            s=self.str1.get()+' '+self.str2.get()+' '+self.str3.get()
+        elif self.str2.get() == '구/군':
+            s = self.str1.get()
+        elif self.str3.get()=='읍/면/동':
+            s = self.str1.get() + ' ' + self.str2.get()
         self.itemList.clear()
         for i in range(1,10):
             url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
@@ -141,7 +148,7 @@ class SearchState:
         self.frame2.place(x=50,y=550)
         self.scrollbar=Scrollbar(self.frame2)
         self.scrollbar.pack(side='right',fill="y")
-        self.listbox=Listbox(self.frame2,width=45,height=5,yscrollcommand=self.scrollbar.set)
+        self.listbox=Listbox(self.frame2,width=45,height=5,borderwidth=7,relief='ridge',yscrollcommand=self.scrollbar.set)
         
         self.listbox.pack(side='left')
         self.scrollbar["command"]=self.listbox.yview

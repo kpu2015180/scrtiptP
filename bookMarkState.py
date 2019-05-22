@@ -59,7 +59,7 @@ class BookMarkState:
         self.frame2.place(x=50,y=15)
         self.scrollbar=Scrollbar(self.frame2)
         self.scrollbar.pack(side='right',fill="y")
-        self.listbox=Listbox(self.frame2,width=45,height=5,yscrollcommand=self.scrollbar.set)
+        self.listbox=Listbox(self.frame2,width=45,height=5,borderwidth=7,relief='ridge',yscrollcommand=self.scrollbar.set)
         
         self.listbox.pack(side='left')
         self.scrollbar["command"]=self.listbox.yview
