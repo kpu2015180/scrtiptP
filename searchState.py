@@ -17,39 +17,54 @@ class SearchState:
         #mainloop()
         pass
     def searchA(self):
+        t1 = self.str1.get()
+        t2 = self.str2.get()
         if self.str1.get() == '시/도':
             return
         self.itemList.clear()
         if self.str3.get()!='읍/면/동':
-            for i in framework.item_List[self.str1.get()][self.str2.get()][self.str3.get()]:
+            for i in framework.item_List[t1][t2][self.str3.get()]:
                 self.itemList.append(i)
         elif self.str2.get() == '구/군':
-            for i in framework.item_List[self.str1.get()].keys():
-                for j in framework.item_List[self.str1.get()][i].keys():
-                    for k in framework.item_List[self.str1.get()][i][j]:
+            for i in framework.item_List[t1].keys():
+                for j in framework.item_List[t1][i].keys():
+                    for k in framework.item_List[t1][i][j]:
                         self.itemList.append(k)
         elif self.str3.get()=='읍/면/동':
-            t1=self.str1.get()
-            t2=self.str2.get()
             for i in framework.item_List[t1][t2].keys():
                 for j in framework.item_List[t1][t2][i]:
                     self.itemList.append(j)
 
-       
+
         self.updateListbox()
         pass
     def searchD(self):
         s=self.e1.get()
+        s=s.split()
+        if len(s)==0:
+            return
         self.itemList.clear()
-        for i in range(1, 10):
-            url = self.hp + self.key + self.pageNo + str(i) + self.type + self.numOfRows + self.flag
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            items = soup.findAll('row')
-            for item in items:
-                if bool(re.match(s,item.find('sisul_addr').text)):
-                    self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
-                                                 item.find('longitude').text,item.find('latitude').text))
+        if len(s)==3:
+            if s[0] in framework.item_List.keys():
+                if s[1] in framework.item_List[s[0]].keys():
+                    if s[2] in framework.item_List[s[0]][s[1]].keys():
+                        for  i in framework.item_List[s[0]][s[1]][s[2]]:
+                            self.itemList.append(i)
+        elif len(s)==1:
+            if s[0] in framework.item_List.keys():
+                for i in framework.item_List[s[0]].keys():
+                    for j in framework.item_List[s[0]][i].keys():
+                        for k in framework.item_List[s[0]][i][j]:
+                            self.itemList.append(k)
+
+        elif len(s)==2:
+            if s[0] in framework.item_List.keys():
+                if s[1] in framework.item_List[s[0]].keys():
+                    for i in framework.item_List[s[0]][s[1]].keys():
+                        for j in framework.item_List[s[0]][s[1]][i]:
+                            self.itemList.append(j)
+
+        self.updateListbox()
 
 
         pass
