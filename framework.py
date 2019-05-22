@@ -22,7 +22,7 @@ bookMarkList=[]
 item_List=dict()
 hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
 key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
-numOfRows = '&numOfRows=1000'
+numOfRows = '&numOfRows=500'
 pageNo = '&pageNo='  #1~18 까지 가능
 type = '&type=xml'
 flag = '&flag=Y'
@@ -34,14 +34,18 @@ for i in range(1,18):
     for item in items:
         s=item.find('sisul_addr').text
         s=s.split()
-        if not s[0] in item_List.keys:
-            item_List[s[0]]=dict()
-        if not s[1] in item_List[s[0]].keys:
-            item_List[s[0]][s[1]] = dict()
-        if not s[2] in item_List[s[0]][s[1]].keys:
-            item_List[s[0]][s[1]][s[2]] = []
-        item_List[s[0]][s[1]][s[2]].append(Shelter(item.find('sisul_rddr').text, item.find('sisul_addr').text, item.find('facility_name').text,
-                                                   item.find('longitude').text, item.find('latitude').text))
+        if len(s) > 3:
+            t1 = s[0]
+            t2 = s[1]
+            t3 = s[2]
+            if not t1 in item_List.keys():
+                item_List[t1]=dict()
+            if not t2 in item_List[t1].keys():
+                item_List[t1][t2] = dict()
+            if not t3 in item_List[t1][t2].keys():
+                item_List[t1][t2][t3] = list()
+            item_List[t1][t2][t3].append(Shelter(item.find('sisul_rddr').text, item.find('sisul_addr').text, item.find('facility_name').text,
+                                                    item.find('longitude').text, item.find('latitude').text))
 
 
 

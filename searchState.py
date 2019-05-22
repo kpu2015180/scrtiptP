@@ -7,14 +7,7 @@ from bs4 import BeautifulSoup
 import framework
 import pickle
 
-class Shelter:
-    def __init__(self,rddr,addr,fName,longtitude,latitude):
-        self.rddr=rddr
-        self.addr=addr
-        self.facility_name=fName
-        self.longtitude=longtitude
-        self.latitude=latitude
-        pass
+
 class SearchState:
     def __init__(self):
         #self.window=Tk()
@@ -26,22 +19,23 @@ class SearchState:
     def searchA(self):
         if self.str1.get() == '시/도':
             return
-        if self.str3.get()!='읍/면/동':
-            s=self.str1.get()+' '+self.str2.get()+' '+self.str3.get()
-        elif self.str2.get() == '구/군':
-            s = self.str1.get()
-        elif self.str3.get()=='읍/면/동':
-            s = self.str1.get() + ' ' + self.str2.get()
         self.itemList.clear()
-        for i in range(1,10):
-            url = self.hp + self.key + self.pageNo + str(i)+self.type + self.numOfRows + self.flag
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            items = soup.findAll('row')
-            for item in items:
-                if bool(re.match(s,item.find('sisul_addr').text)):
-                    self.itemList.append(Shelter(item.find('sisul_rddr').text,item.find('sisul_addr').text,item.find('facility_name').text,
-                                                 item.find('longitude').text,item.find('latitude').text))
+        if self.str3.get()!='읍/면/동':
+            for i in framework.item_List[self.str1.get()][self.str2.get()][self.str3.get()]:
+                self.itemList.append(i)
+        elif self.str2.get() == '구/군':
+            for i in framework.item_List[self.str1.get()].keys():
+                for j in framework.item_List[self.str1.get()][i].keys():
+                    for k in framework.item_List[self.str1.get()][i][j]:
+                        self.itemList.append(k)
+        elif self.str3.get()=='읍/면/동':
+            t1=self.str1.get()
+            t2=self.str2.get()
+            for i in framework.item_List[t1][t2].keys():
+                for j in framework.item_List[t1][t2][i]:
+                    self.itemList.append(j)
+
+       
         self.updateListbox()
         pass
     def searchD(self):
