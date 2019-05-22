@@ -48,7 +48,7 @@ class SearchState:
             if s[0] in framework.item_List.keys():
                 if s[1] in framework.item_List[s[0]].keys():
                     if s[2] in framework.item_List[s[0]][s[1]].keys():
-                        for  i in framework.item_List[s[0]][s[1]][s[2]]:
+                        for i in framework.item_List[s[0]][s[1]][s[2]]:
                             self.itemList.append(i)
         elif len(s)==1:
             if s[0] in framework.item_List.keys():
@@ -86,6 +86,8 @@ class SearchState:
             pass
     def updateListbox(self):
         i=0
+        if self.listbox.size():
+            self.listbox.delete(0,self.listbox.size())
         for item in self.itemList:
             self.listbox.insert(i,item.addr)
             i+=1
