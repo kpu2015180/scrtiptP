@@ -82,7 +82,7 @@ class SearchState:
             i=shelter.rddr.index('(')
             self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
 
-        
+
             pass
     def updateListbox(self):
         i=0
