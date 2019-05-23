@@ -88,15 +88,15 @@ class SearchState:
             lat=float(shelter.latitude)
             lon=float(shelter.longtitude)
             map_osm = folium.Map(location=[lat,lon], zoom_start=17)
-            #folium.Marker([shelter.latitude, shelter.longtitude], popup='Shild').add_to(map_osm)
+            folium.Marker([lat,lon], popup='Shild').add_to(map_osm)
             map_osm.save('ShildMap.html')
-            #tmpurl = 'file:///' + os.getcwd() + '/osm.html'
-            #options = webdriver.ChromeOptions()
-            #driver = webdriver.Chrome(chrome_options=options)
-            #driver.get(tmpurl)
-            #driver.save_screenshot("Shild.png")
+            tmpurl = 'file:///' + os.getcwd() + '/ShildMap.html'
+            options = webdriver.ChromeOptions()
+            driver = webdriver.Chrome(chrome_options=options)
+            driver.get(tmpurl)
+            driver.save_screenshot("Shild.png")
 
-            #driver.close()
+            driver.close()
         pass
     def updateListbox(self):
         i=0
