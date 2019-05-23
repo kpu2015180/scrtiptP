@@ -89,6 +89,7 @@ class SearchState:
             map_osm = folium.Map(location=[lat,lon], zoom_start=17)
             folium.Marker([lat,lon], popup='Shild').add_to(map_osm)
             map_osm.save('ShildMap.html')
+
             tmpurl = 'file:///' + os.getcwd() + '/ShildMap.html'
             options = webdriver.ChromeOptions()
             driver = webdriver.Chrome(chrome_options=options)
