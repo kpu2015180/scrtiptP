@@ -81,6 +81,8 @@ class SearchState:
             shelter=self.itemList[n[0]]
             i=shelter.rddr.index('(')
             self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
+
+        
             pass
     def updateListbox(self):
         i=0
@@ -142,9 +144,9 @@ class SearchState:
         #----------------------------------------------------------------------------------
         self.l1=Label(self.window,width=40,height=15,bg='white')      #선택된 대피소 정보란
         self.l1.place(x=50,y=310)
-        self.l2=Label(self.window,width=80,height=80,bg='white')      #지도
-        self.l2.place(x=635,y=20)
-        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #메일 보내기 버튼
+        self.l2=Label(self.window,width=80,height=42,bg='white')      #지도
+        self.l2.place(x=615,y=25)
+        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=415) #메일 보내기 버튼
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(self.window,bg='white',width=400,height=100)

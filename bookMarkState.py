@@ -7,14 +7,6 @@ from bs4 import BeautifulSoup
 import framework
 import pickle
 
-class Shelter:
-    def __init__(self,rddr,addr,fName,longtitude,latitude):
-        self.rddr=rddr
-        self.addr=addr
-        self.facility_name=fName
-        self.longtitude=longtitude
-        self.latitude=latitude
-        pass
 class BookMarkState:
     def __init__(self):
         #self.window=Tk()
@@ -46,7 +38,7 @@ class BookMarkState:
         self.window.geometry('600x600' )
 
 
-        self.frame=Frame(self.window,width=500,height=250,bg='white')
+        self.frame=Frame(self.window,width=500,height=250,bg='white')  #지도
         self.frame.place(x=50,y=250)
         #----------------------------------------------------------------------------------
         self.l1=Label(self.window,width=70,height=7,bg='white')      #정보란
