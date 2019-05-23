@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-
-
 class Shelter:
     def __init__(self,rddr,addr,fName,longtitude,latitude):
         self.rddr=rddr
@@ -22,7 +20,7 @@ bookMarkList=[]
 item_List=dict()
 hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
 key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
-numOfRows = '&numOfRows=600'
+numOfRows = '&numOfRows=500'
 pageNo = '&pageNo='  #1~18 까지 가능
 type = '&type=xml'
 flag = '&flag=Y'

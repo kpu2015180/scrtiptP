@@ -36,6 +36,7 @@ class StartState:
         self.window = Tk()
         self.window.geometry('300x300')
         self.window.title('StartState')
+        
         Label(text="대피소", font=('Times New Roman', 40)).pack()
 
         b = Button(self.window, text="지역검색", command=self.goSearchState, font=('Times New Roman', 15))
