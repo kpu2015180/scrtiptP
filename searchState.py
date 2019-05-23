@@ -6,9 +6,8 @@ import framework
 import pickle
 import os
 import folium
-import sys
 from selenium import webdriver
-sys.setrecursionlimit(10000)
+
 class SearchState:
     def __init__(self):
         #self.window=Tk()
@@ -97,6 +96,10 @@ class SearchState:
             driver.save_screenshot("Shild.png")
 
             driver.close()
+            Map =PhotoImage(file ="Shild.png")
+            self.l2.configure(image=Map)
+            self.l2.image=Map
+
         pass
     def updateListbox(self):
         i=0
@@ -158,7 +161,9 @@ class SearchState:
         #----------------------------------------------------------------------------------
         self.l1=Label(self.window,width=40,height=15,bg='white')      #선택된 대피소 정보란
         self.l1.place(x=50,y=310)
-        self.l2=Label(self.window,width=80,height=42,bg='white')      #지도
+
+        Photo = PhotoImage(file="Shild_Main_Map.png")
+        self.l2=Label(self.window,width=550,height=600,image=Photo,bg='white')      #지도
         self.l2.place(x=615,y=25)
         Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=415) #메일 보내기 버튼
         #----------------------------------------------------
