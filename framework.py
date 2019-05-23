@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-
-
 class Shelter:
     def __init__(self,rddr,addr,fName,longtitude,latitude):
         self.rddr=rddr

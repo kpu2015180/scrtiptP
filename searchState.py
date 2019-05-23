@@ -4,7 +4,9 @@ from tkinter import ttk
 
 import framework
 import pickle
-
+import os
+import folium
+from selenium import webdriver
 
 class SearchState:
     def __init__(self):
@@ -81,9 +83,9 @@ class SearchState:
             shelter=self.itemList[n[0]]
             i=shelter.rddr.index('(')
             self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
+        map_osm = folium.Map(location=[shelter.latitude, shelter.longtitude], zoom_start=17)
 
-
-            pass
+        pass
     def updateListbox(self):
         i=0
         if self.listbox.size():
