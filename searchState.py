@@ -6,8 +6,9 @@ import framework
 import pickle
 import os
 import folium
+import sys
 from selenium import webdriver
-
+sys.setrecursionlimit(10000)
 class SearchState:
     def __init__(self):
         #self.window=Tk()
@@ -83,8 +84,19 @@ class SearchState:
             shelter=self.itemList[n[0]]
             i=shelter.rddr.index('(')
             self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
-        map_osm = folium.Map(location=[shelter.latitude, shelter.longtitude], zoom_start=17)
 
+            lat=float(shelter.latitude)
+            lon=float(shelter.longtitude)
+            map_osm = folium.Map(location=[lat,lon], zoom_start=17)
+            #folium.Marker([shelter.latitude, shelter.longtitude], popup='Shild').add_to(map_osm)
+            map_osm.save('ShildMap.html')
+            #tmpurl = 'file:///' + os.getcwd() + '/osm.html'
+            #options = webdriver.ChromeOptions()
+            #driver = webdriver.Chrome(chrome_options=options)
+            #driver.get(tmpurl)
+            #driver.save_screenshot("Shild.png")
+
+            #driver.close()
         pass
     def updateListbox(self):
         i=0
