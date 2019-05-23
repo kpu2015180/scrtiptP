@@ -6,6 +6,10 @@ from bs4 import BeautifulSoup
 
 import framework
 import pickle
+import os
+import folium
+from selenium import webdriver
+
 
 class BookMarkState:
     def __init__(self):
@@ -30,6 +34,22 @@ class BookMarkState:
             shelter=framework.bookMarkList[n[0]]
             i=shelter.rddr.index('(')
             self.l1.configure(text='시설명:'+str(shelter.facility_name)+'\n-도로명 주소-\n'+shelter.rddr[0:i]+'\n'+shelter.rddr[i:]+'\n-지번주소-\n'+shelter.addr)
+
+            lat = float(shelter.latitude)
+            lon = float(shelter.longtitude)
+            map_osm = folium.Map(location=[lat, lon], zoom_start=17)
+            folium.Marker([lat, lon], popup='Shild').add_to(map_osm)
+            map_osm.save('ShildMap.html')
+            tmpurl = 'file:///' + os.getcwd() + '/ShildMap.html'
+            options = webdriver.ChromeOptions()
+            driver = webdriver.Chrome(chrome_options=options)
+            driver.get(tmpurl)
+            driver.save_screenshot("Shild.png")
+
+            driver.close()
+            Map = PhotoImage(file="Shild.png")
+            self.L2.configure(image=Map)
+            self.L2.image = Map
             pass
 
     def enter(self):
@@ -37,9 +57,9 @@ class BookMarkState:
         self.window.title('SearchState')
         self.window.geometry('600x600' )
 
-
-        self.frame=Frame(self.window,width=500,height=250,bg='white')  #지도
-        self.frame.place(x=50,y=250)
+        Photo = PhotoImage(file="Shild_Main_Map.png")
+        self.L2=Label(self.window,width=500,height=250,image=Photo,bg='white')  #지도
+        self.L2.place(x=50,y=250)
         #----------------------------------------------------------------------------------
         self.l1=Label(self.window,width=70,height=7,bg='white')      #정보란
         self.l1.place(x=50,y=120)
