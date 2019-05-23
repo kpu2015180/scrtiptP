@@ -108,7 +108,7 @@ class SearchState:
     def enter(self):
         self.window = Tk()
         self.window.title('SearchState')
-        self.window.geometry('600x700' )
+        self.window.geometry('1200x700' )
         f=open('시도구','rb')
         self.dic=pickle.load(f)
         f.close()
@@ -140,10 +140,10 @@ class SearchState:
         self.frame=Frame(self.window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.frame.place(x=50,y=100)
         #----------------------------------------------------------------------------------
-        self.l1=Label(self.window,width=40,height=15,bg='white')      #지도
+        self.l1=Label(self.window,width=40,height=15,bg='white')      #선택된 대피소 정보란
         self.l1.place(x=50,y=310)
-        self.l2=Label(self.window,width=29,height=10,bg='white')      #선택된 대피소 정보란
-        self.l2.place(x=345,y=310)
+        self.l2=Label(self.window,width=80,height=80,bg='white')      #지도
+        self.l2.place(x=635,y=20)
         Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=475) #메일 보내기 버튼
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
