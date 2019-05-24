@@ -167,6 +167,8 @@ class SearchState:
         self.l2=Label(self.window,width=550,height=600,image=Photo,bg='white')      #지도
         self.l2.place(x=615,y=25)
         Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=415) #메일 보내기 버튼
+        self.mEntry=Entry(self.window,width=50)
+        self.mEntry.place(x=348,y=395)
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(self.window,bg='white',width=400,height=100)
