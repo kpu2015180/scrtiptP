@@ -125,8 +125,18 @@ class SearchState:
                 self.c3.configure(values=list(self.dic[self.str1.get()][self.str2.get()]))
                 self.c3['values'] = list(self.dic[self.str1.get()][self.str2.get()])
                 l=framework.item_List
+                s1=self.str1.get()
+                s2=self.str2.get()
                 #width= 500 height=190
-                self.frame
+                self.canvas.delete("grim")
+                size=len(framework.item_List[s1][s2])
+                barw=(500-20)/size
+                for i in range(size):
+                    self.canvas.create_rectangle(10 + i * barw,10 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) / 20) + 10,10 + i * barw + barw, 190 - 10, tags="grim")
+                    #self.canvas.create_text(15 + i * barw, 5 + (self.height - 20) * (1 - self.numbers[i] /size) + 10,
+                     #                       text=str(self.numbers[i]), tags="grim")
+                pass
+
         pass
     def enter(self):
         self.window = Tk()
@@ -160,8 +170,9 @@ class SearchState:
         self.start=True
         Button(self.window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
         Button(self.window, command=self.searchD, text="  직접검색  ",bg='yellow',font = ('현대하모니 L', 10, 'bold')).place(x=470, y=65)
-        self.frame=Frame(self.window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
-        self.frame.place(x=50,y=100)
+        self.canvas=Canvas(self.window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
+        self.canvas.place(x=50,y=100)
+
         #----------------------------------------------------------------------------------
         self.l1=Label(self.window,width=40,height=15,bg='white')      #선택된 대피소 정보란
         self.l1.place(x=50,y=310)
