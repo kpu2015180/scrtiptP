@@ -124,6 +124,9 @@ class SearchState:
             if self.str1.get() != '시/도':
                 self.c3.configure(values=list(self.dic[self.str1.get()][self.str2.get()]))
                 self.c3['values'] = list(self.dic[self.str1.get()][self.str2.get()])
+                l=framework.item_List
+                #width= 500 height=190
+                self.frame
         pass
     def enter(self):
         self.window = Tk()
@@ -167,7 +170,7 @@ class SearchState:
         self.l2=Label(self.window,width=550,height=600,image=Photo,bg='white')      #지도
         self.l2.place(x=615,y=25)
         Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=348,y=415) #메일 보내기 버튼
-        self.mEntry=Entry(self.window,width=30)
+        self.mEntry=Entry(self.window,width=30)  #메일 입력란
         self.mEntry.place(x=343,y=375)
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
