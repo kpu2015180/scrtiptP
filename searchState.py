@@ -131,10 +131,16 @@ class SearchState:
                 self.canvas.delete("grim")
                 size=len(framework.item_List[s1][s2])
                 barw=(500-20)/size
-                for i in range(size):
-                    self.canvas.create_rectangle(10 + i * barw,10 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) / 20) + 10,10 + i * barw + barw, 190 - 10, tags="grim")
-                    #self.canvas.create_text(15 + i * barw, 5 + (self.height - 20) * (1 - self.numbers[i] /size) + 10,
-                     #                       text=str(self.numbers[i]), tags="grim")
+                max=0
+                for i in framework.item_List[s1][s2].keys():
+                    if max< len(framework.item_List[s1][s2][i]):
+                        max=len(framework.item_List[s1][s2][i])
+                s=0
+                for i in framework.item_List[s1][s2].keys():
+                    self.canvas.create_rectangle(10 + s * barw,10 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) / max) + 10,10 + s * barw + barw, 190 , tags="grim")
+                    self.canvas.create_text(15 + s * barw+barw//2, 5 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) /max) + 10,
+                                            text=i+"\n"+str(len(framework.item_List[s1][s2][i])), tags="grim")
+                    s+=1
                 pass
 
         pass
