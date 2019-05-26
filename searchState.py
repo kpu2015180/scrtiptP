@@ -1,4 +1,5 @@
 import gmail
+
 from tkinter import*
 from tkinter import ttk
 
@@ -77,6 +78,11 @@ class SearchState:
                 framework.bookMarkList.append(shelter)
             pass
     def sendMail(self):
+        if self.listbox.size():
+            n=self.listbox.curselection()
+            shelter=self.itemList[n[0]]
+            gmail.sendMail(shelter,self.mEntry.get())
+
         pass
     def selectValue(self):
         if self.listbox.size():
