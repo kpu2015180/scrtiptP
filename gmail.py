@@ -1,45 +1,52 @@
 # -*- coding: utf-8 -*-
 import mimetypes
 import mysmtplib
+import framework
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 
-#global value
-host = "smtp.gmail.com" # Gmail STMP 서버 주소.
-port = "587"
-htmlFileName = "logo.html"
+def sendMail(reciever):
+    #string="도로명 주소 : "+Shelter.rddr+"\n"
+    #string+="지번 주소 : "+Shelter.addr+"\n"
+    #string+="시설명 : "+Shelter.facility_name+"\n"
 
-senderAddr = "ehdrpakt@gmail.com"     # 보내는 사람 email 주소.
-recipientAddr = "ehdrpakt@naver.com"   # 받는 사람 email 주소.
+    # global value
+    host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
+    port = "587"
+    htmlFileName = "ShildMap.html"
 
-#msg = MIMEBase("multipart", "alternative")
+    senderAddr = "ehdrpakt@gmail.com"  # 보내는 사람 email 주소.
+    recipientAddr = reciever  # 받는 사람 email 주소.
 
-msg =MIMEText("한글테스트")
-msg['Subject'] = "Test email in Python 3.0" #제목
-msg['From'] = senderAddr
-msg['To'] = recipientAddr
+    #msg = MIMEBase("multipart", "alternative")
 
-# MIME 문서를 생성합니다.
-htmlFD = open(htmlFileName, 'rb')
-HtmlPart = MIMEText(htmlFD.read(),'html', _charset = 'UTF-8' )
-htmlFD.close()
+    msg =MIMEText("test")
+    msg['Subject'] = "대피소 정보"  # 제목
+    msg['From'] = senderAddr
+    msg['To'] = recipientAddr
 
-# 만들었던 mime을 MIMEBase에 첨부 시킨다.
-#msg.attach(HtmlPart)
+    # MIME 문서를 생성합니다.
+    htmlFD = open(htmlFileName, 'rb')
+    HtmlPart = MIMEText(htmlFD.read(), 'html', _charset='UTF-8')
+    htmlFD.close()
 
-# 메일을 발송한다.
-s = mysmtplib.MySMTP(host,port)
-#s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
-s.ehlo()
-s.starttls()
-s.ehlo()
-s.login("ehdrpakt@gmail.com","ssiber12")
-s.sendmail(senderAddr , [recipientAddr], msg.as_string())
-s.close()
+    # 만들었던 mime을 MIMEBase에 첨부 시킨다.
+    #msg.attach(HtmlPart)
+
+    # 메일을 발송한다.
+    s = mysmtplib.MySMTP(host, port)
+    # s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
+    s.ehlo()
+    s.starttls()
+    s.ehlo()
+    s.login("ehdrpakt@gmail.com", "ssiber12")
+    s.sendmail(senderAddr, [recipientAddr], msg.as_string())
+    s.close()
+
+    pass
 
 
-
-
+sendMail("ehdrpakt@naver.com")
 
 
 
