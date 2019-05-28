@@ -37,7 +37,7 @@ class StartState:
         self.window.geometry('300x300')
         self.window.title('StartState')
         
-        Label(text="대피소", font=('Times New Roman', 40)).pack()
+        Label(text="원 터치 벙커", font=('Times New Roman', 40)).pack()
 
         b = Button(self.window, text="지역검색", command=self.goSearchState, font=('Times New Roman', 15))
         b.place(x=100, y=130)
