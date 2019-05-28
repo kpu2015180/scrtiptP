@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import pickle
 
 class Shelter:
     def __init__(self,rddr,addr,fName,longtitude,latitude):
@@ -24,7 +24,7 @@ numOfRows = '&numOfRows=500'
 pageNo = '&pageNo='  #1~18 까지 가능
 type = '&type=xml'
 flag = '&flag=Y'
-for i in range(1,18):
+for i in range(1,2):
     url = hp + key + pageNo + str(i) + type + numOfRows + flag
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -100,7 +100,17 @@ def run(start_state):
     while (len(stack) > 0):
         stack[-1].exit()
         stack.pop()
-
+def save():
+    f = open('즐겨찾기', 'wb')
+    pickle.dump(bookMarkList,f)
+    f.close()
+    pass
+def load():
+    global bookMarkList
+    f = open('즐겨찾기', 'rb')
+    bookMarkList=pickle.load(f)
+    f.close()
+    pass
 
 
 

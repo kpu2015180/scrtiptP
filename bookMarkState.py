@@ -10,6 +10,8 @@ import os
 import folium
 from selenium import webdriver
 
+import gmail
+
 
 class BookMarkState:
     def __init__(self):
@@ -26,8 +28,13 @@ class BookMarkState:
             self.listbox.delete(n[0])
             framework.bookMarkList.remove(shelter)
         pass
+
     def sendMail(self):
-        pass
+        if self.listbox.size():
+            n = self.listbox.curselection()
+            shelter = framework.bookMarkList[n[0]]
+            gmail.sendMail(shelter, self.e.get())
+
     def selectValue(self):
         if self.listbox.size():
             n=self.listbox.curselection()
@@ -64,7 +71,9 @@ class BookMarkState:
         self.l1=Label(self.window,width=70,height=7,bg='white')      #정보란
         self.l1.place(x=50,y=120)
         #--------------------------------------------------------------------------------------------
-        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=208,y=510) #메일 보내기 버튼
+        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=308,y=510) #메일 보내기 버튼
+        self.e=Entry(self.window,width=30)
+        self.e.place(x=88,y=530)
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(self.window,bg='white',width=400,height=100)

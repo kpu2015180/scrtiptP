@@ -2,6 +2,7 @@ from tkinter import*
 import framework
 import searchState
 import bookMarkState
+import pickle
 
 class StartState:
     def goSearchState(self):
