@@ -64,7 +64,7 @@ class BookMarkState:
         self.window.title('SearchState')
         self.window.geometry('600x600' )
 
-        Photo = PhotoImage(file="Map_Main.png")
+        Photo = PhotoImage(file="Bookmark_Map_Main.png")
         self.L2=Label(self.window,width=500,height=250,image=Photo,bg='white')  #지도
         self.L2.place(x=50,y=250)
         #----------------------------------------------------------------------------------
