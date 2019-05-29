@@ -16,7 +16,7 @@ def sendMail(Shelter,reciever):
     string+="지번 주소 : "+Shelter.addr+"\n"
     string+="시설명 : "+Shelter.facility_name+"\n"
 
-    imageFileName = "Shild_Main_Map.png"
+    imageFileName = "Shild.png"
 
     # global value
     host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
@@ -42,14 +42,14 @@ def sendMail(Shelter,reciever):
     #HtmlPart = MIMEText(htmlFD.read(), 'html', _charset='UTF-8')
     #htmlFD.close()
 
-    #imageFD = open(imageFileName, 'rb')
-    #ImagePart = MIMEImage(imageFD.read())
-    #imageFD.close()
+    imageFD = open(imageFileName, 'rb')
+    ImagePart = MIMEImage(imageFD.read())
+    imageFD.close()
 
     # 만들었던 mime을 MIMEBase에 첨부 시킨다.
     #msg.attach(HtmlPart)
     msg.attach(a)
-    #msg.attach(ImagePart)
+    msg.attach(ImagePart)
 
     # 메일을 발송한다.
     s = mysmtplib.MySMTP(host, port)
