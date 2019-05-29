@@ -186,9 +186,9 @@ class SearchState:
         self.start=True
 
         Serach = PhotoImage(file='search.png')
-        Button(window,command=self.searchA,width=120,height=30,image=Serach).place(x=450,y=25)
+        Button(window,command=self.searchA,width=120,height=30,image=Serach,bg='PaleTurquoise1').place(x=450,y=25)
         Org_serach=PhotoImage(file='organic_search.png')
-        Button(window, command=self.searchD,width=170,height=30,image=Org_serach).place(x=430, y=60)
+        Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=60)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.canvas.place(x=50,y=100)
@@ -198,11 +198,11 @@ class SearchState:
         self.l1.place(x=50,y=310)
 
         Photo = PhotoImage(file="Map_Main.png")
-        self.l2=Label(window,width=550,height=600,image=Photo,bg='white')      #지도
+        self.l2=Label(window,width=550,height=600,image=Photo,bg='PaleTurquoise1')      #지도
         self.l2.place(x=615,y=25)
 
         Email = PhotoImage(file='email_icon.png')
-        Button(window,command=self.sendMail,width=200,height=60,image=Email).place(x=348,y=415) #메일 보내기 버튼
+        Button(window,command=self.sendMail,width=200,height=60,image=Email,bg='PaleTurquoise1').place(x=348,y=415) #메일 보내기 버튼
         self.mEntry=Entry(self.window,width=30)  #메일 입력란
         self.mEntry.place(x=343,y=375)
         #----------------------------------------------------
@@ -217,9 +217,9 @@ class SearchState:
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
         Select=PhotoImage(file='select_icon.png')
-        Button(window, command=self.selectValue, width=80, height=40,image=Select).place(x=435, y=550)  # 선택 버튼
+        Button(window, command=self.selectValue, width=80, height=40,image=Select,bg='PaleTurquoise1').place(x=435, y=550)  # 선택 버튼
         Bookmark = PhotoImage(file='bookmark_icon.png')
-        Button(window, command=self.addList, width=100, height=40, image=Bookmark).place(x=425, y=595)  # 즐겨찾기 버튼
+        Button(window, command=self.addList, width=100, height=40, image=Bookmark,bg='PaleTurquoise1').place(x=425, y=595)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
