@@ -184,7 +184,9 @@ class SearchState:
         self.e1=Entry(window,width=50)    #직접 검색란
         self.e1.place(x=70,y=70)
         self.start=True
-        Button(window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
+
+        Serach = PhotoImage(file='search.png')
+        Button(window,command=self.searchA,width=120,height=30,image=Serach).place(x=450,y=25)
         Org_serach=PhotoImage(file='organic_search.png')
         Button(window, command=self.searchD,width=170,height=30,image=Org_serach).place(x=430, y=60)
 
