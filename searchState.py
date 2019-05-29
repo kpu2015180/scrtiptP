@@ -174,18 +174,19 @@ class SearchState:
         self.c1.set("시/도")
 
         self.c2 = ttk.Combobox(window,textvariable=self.str2, width=13, height=30,postcommand=self.func2)
-        self.c2.place(x=190, y=30)              #구/군 콤보박스
+        self.c2.place(x=180, y=30)              #구/군 콤보박스
         self.c2.set("구/군")
 
         self.c3 = ttk.Combobox(window, textvariable=self.str3,width=13, height=30,postcommand=self.func3)
-        self.c3.place(x=330, y=30)              #읍/면/동 콤보박스
+        self.c3.place(x=310, y=30)              #읍/면/동 콤보박스
         self.c3.set("읍/면/동")
 
         self.e1=Entry(window,width=50)    #직접 검색란
         self.e1.place(x=70,y=70)
         self.start=True
         Button(window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
-        Button(window, command=self.searchD, text="  직접검색  ",bg='yellow',font = ('현대하모니 L', 10, 'bold')).place(x=470, y=65)
+        Org_serach=PhotoImage(file='organic_search.png')
+        Button(window, command=self.searchD,width=170,height=30,image=Org_serach).place(x=430, y=60)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.canvas.place(x=50,y=100)
