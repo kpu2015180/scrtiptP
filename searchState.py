@@ -186,6 +186,7 @@ class SearchState:
         self.start=True
         Button(window,command=self.searchA,text="  지역검색  ",bg="red",font = ('현대하모니 L', 10, 'bold')).place(x=470,y=25)
         Button(window, command=self.searchD, text="  직접검색  ",bg='yellow',font = ('현대하모니 L', 10, 'bold')).place(x=470, y=65)
+
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.canvas.place(x=50,y=100)
 
@@ -210,8 +211,8 @@ class SearchState:
         self.listbox.pack(side='left')
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
-        Button(window, command=self.selectValue, width=14, height=1, text="선택", bg='gray',   #결과 값 선택 버튼
-               font=('현대하모니 L', 12, 'bold')).place(x=400, y=550)  # 즐겨찾기 버튼
+        Select=PhotoImage(file='select_icon.png')
+        Button(window, command=self.selectValue, width=80, height=40,image=Select).place(x=400, y=550)  # 선택 버튼
         Button(window, command=self.addList, width=14, height=1, text="즐겨찾기 추가", bg='gray', #즐겨찾기 버튼
                font=('현대하모니 L', 12, 'bold')).place(x=400, y=595)  # 즐겨찾기 버튼
         mainloop()

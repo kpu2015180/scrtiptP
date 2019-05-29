@@ -89,8 +89,8 @@ class BookMarkState:
             self.listbox.insert(i,item.addr)
             i+=1
         #--------------------------------------------------------
-        Button(self.window, command=self.selectValue, width=14, height=1, text="선택", bg='gray',   #결과 값 선택 버튼
-               font=('현대하모니 L', 12, 'bold')).place(x=400, y=15)  # 즐겨찾기 버튼
+        Select = PhotoImage(file='select_icon.png')
+        Button(self.window, command=self.selectValue, width=80, height=40,image=Select).place(x=400, y=15)  # 결과 선택 버튼
         Button(self.window, command=self.deleteList, width=14, height=1, text="즐겨찾기 삭제", bg='gray', #즐겨찾기 버튼
                font=('현대하모니 L', 12, 'bold')).place(x=400, y=60)  # 즐겨찾기 버튼
         mainloop()
