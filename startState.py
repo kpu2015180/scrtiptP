@@ -47,7 +47,7 @@ class StartState:
 
         b = Button(label, text="지역검색", command=self.goSearchState, font=('Times New Roman', 15),bg='white')
         b.place(x=100, y=120)
-
+        
         d = Button(label, text="즐겨찾기", command=self.goBookMarkState, font=('Times New Roman', 15),bg='white')
         d.place(x=100, y=220)
         mainloop()
