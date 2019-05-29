@@ -45,11 +45,12 @@ class StartState:
         label.config(image=label.img,compound='bottom')
         label.pack()
 
-        b = Button(label, text="지역검색", command=self.goSearchState, font=('Times New Roman', 15),bg='white')
-        b.place(x=100, y=120)
-        
-        d = Button(label, text="즐겨찾기", command=self.goBookMarkState, font=('Times New Roman', 15),bg='white')
-        d.place(x=100, y=220)
+        Start=PhotoImage(file='Start_icon.png')
+        b = Button(label,command=self.goSearchState ,width=100,height=40,image=Start)
+        b.place(x=95, y=60)
+        BookmarkStart = PhotoImage(file='bookmark_Start.png')
+        d = Button(label, text="즐겨찾기", command=self.goBookMarkState,width=120,height=40,image=BookmarkStart)
+        d.place(x=85, y=250)
         mainloop()
         framework.quit()
     def exit(self):
