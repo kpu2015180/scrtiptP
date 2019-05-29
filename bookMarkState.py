@@ -63,20 +63,22 @@ class BookMarkState:
         self.window = Tk()
         self.window.title('SearchState')
         self.window.geometry('600x600' )
-
+        window_bg_img = PhotoImage(file='BookShild.png')
+        window = Label(self.window, width=600, height=600, image=window_bg_img)
+        window.pack()
         Photo = PhotoImage(file="Bookmark_Map_Main.png")
-        self.L2=Label(self.window,width=500,height=250,image=Photo,bg='white')  #지도
+        self.L2=Label(window,width=500,height=250,image=Photo,bg='white')  #지도
         self.L2.place(x=50,y=250)
         #----------------------------------------------------------------------------------
-        self.l1=Label(self.window,width=70,height=7,bg='white')      #정보란
+        self.l1=Label(window,width=70,height=7,bg='white')      #정보란
         self.l1.place(x=50,y=120)
         #--------------------------------------------------------------------------------------------
-        Button(self.window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=308,y=510) #메일 보내기 버튼
+        Button(window,command=self.sendMail,width=16,height=2,text="메일 보내기",bg='green',font = ('현대하모니 L', 15, 'bold')).place(x=308,y=510) #메일 보내기 버튼
         self.e=Entry(self.window,width=30)
         self.e.place(x=88,y=530)
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
-        self.frame2=Frame(self.window,bg='white',width=400,height=100)
+        self.frame2=Frame(window,bg='white',width=400,height=100)
         self.frame2.place(x=50,y=15)
         self.scrollbar=Scrollbar(self.frame2)
         self.scrollbar.pack(side='right',fill="y")
@@ -90,9 +92,9 @@ class BookMarkState:
             i+=1
         #--------------------------------------------------------
         Select = PhotoImage(file='select_icon.png')
-        Button(self.window, command=self.selectValue, width=80, height=40,image=Select).place(x=435, y=15)  # 결과 선택 버튼
+        Button(window, command=self.selectValue, width=80, height=40,image=Select).place(x=435, y=15)  # 결과 선택 버튼
         Bookmark = PhotoImage(file='rbookmark_icon.png')
-        Button(self.window, command=self.deleteList, width=100, height=40,image=Bookmark).place(x=425, y=60)  # 즐겨찾기 버튼
+        Button(window, command=self.deleteList, width=100, height=40,image=Bookmark).place(x=425, y=60)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
