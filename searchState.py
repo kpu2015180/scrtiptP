@@ -212,9 +212,9 @@ class SearchState:
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
         Select=PhotoImage(file='select_icon.png')
-        Button(window, command=self.selectValue, width=80, height=40,image=Select).place(x=400, y=550)  # 선택 버튼
-        Button(window, command=self.addList, width=14, height=1, text="즐겨찾기 추가", bg='gray', #즐겨찾기 버튼
-               font=('현대하모니 L', 12, 'bold')).place(x=400, y=595)  # 즐겨찾기 버튼
+        Button(window, command=self.selectValue, width=80, height=40,image=Select).place(x=435, y=550)  # 선택 버튼
+        Bookmark = PhotoImage(file='bookmark_icon.png')
+        Button(window, command=self.addList, width=100, height=40, image=Bookmark).place(x=425, y=595)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
