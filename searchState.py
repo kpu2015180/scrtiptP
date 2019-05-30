@@ -170,36 +170,36 @@ class SearchState:
         self.str3 = StringVar()
 
         self.c1=ttk.Combobox(window,textvariable=self.str1,width=13,height=30,postcommand=self.func1,values=list(self.dic.keys()))
-        self.c1.place(x=50,y=30)                 # 시/도 콤보박스
+        self.c1.place(x=70,y=15)                 # 시/도 콤보박스
         self.c1.set("시/도")
 
         self.c2 = ttk.Combobox(window,textvariable=self.str2, width=13, height=30,postcommand=self.func2)
-        self.c2.place(x=180, y=30)              #구/군 콤보박스
+        self.c2.place(x=195, y=15)              #구/군 콤보박스
         self.c2.set("구/군")
 
         self.c3 = ttk.Combobox(window, textvariable=self.str3,width=13, height=30,postcommand=self.func3)
-        self.c3.place(x=310, y=30)              #읍/면/동 콤보박스
+        self.c3.place(x=310, y=15)              #읍/면/동 콤보박스
         self.c3.set("읍/면/동")
 
         self.e1=Entry(window,width=50)    #직접 검색란
-        self.e1.place(x=70,y=70)
+        self.e1.place(x=70,y=55)
         self.start=True
 
         Serach = PhotoImage(file='search.png')
-        Button(window,command=self.searchA,width=120,height=30,image=Serach,bg='PaleTurquoise1').place(x=450,y=25)
+        Button(window,command=self.searchA,width=120,height=30,image=Serach,bg='PaleTurquoise1').place(x=450,y=10)
         Org_serach=PhotoImage(file='organic_search.png')
-        Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=60)
+        Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=45)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.canvas.place(x=50,y=100)
 
         #----------------------------------------------------------------------------------
         self.l1=Label(window,width=40,height=15,bg='white')      #선택된 대피소 정보란
-        self.l1.place(x=50,y=310)
+        self.l1.place(x=50,y=325)
 
         Photo = PhotoImage(file="Map_Main.png")
         self.l2=Label(window,width=550,height=600,image=Photo,bg='PaleTurquoise1')      #지도
-        self.l2.place(x=615,y=25)
+        self.l2.place(x=620,y=25)
 
         Email = PhotoImage(file='email_icon.png')
         Button(window,command=self.sendMail,width=200,height=60,image=Email,bg='PaleTurquoise1').place(x=348,y=415) #메일 보내기 버튼
@@ -208,7 +208,7 @@ class SearchState:
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(window,bg='white',width=400,height=100)
-        self.frame2.place(x=50,y=550)
+        self.frame2.place(x=50,y=580)
         self.scrollbar=Scrollbar(self.frame2)
         self.scrollbar.pack(side='right',fill="y")
         self.listbox=Listbox(self.frame2,width=45,height=5,borderwidth=7,relief='ridge',yscrollcommand=self.scrollbar.set)
@@ -217,9 +217,9 @@ class SearchState:
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
         Select=PhotoImage(file='select_icon.png')
-        Button(window, command=self.selectValue, width=80, height=40,image=Select,bg='PaleTurquoise1').place(x=435, y=550)  # 선택 버튼
+        Button(window, command=self.selectValue, width=80, height=40,image=Select,bg='PaleTurquoise1').place(x=435, y=580)  # 선택 버튼
         Bookmark = PhotoImage(file='bookmark_icon.png')
-        Button(window, command=self.addList, width=100, height=40, image=Bookmark,bg='PaleTurquoise1').place(x=425, y=595)  # 즐겨찾기 버튼
+        Button(window, command=self.addList, width=100, height=40, image=Bookmark,bg='PaleTurquoise1').place(x=425, y=625)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
