@@ -68,15 +68,15 @@ class BookMarkState:
         window.pack()
         Photo = PhotoImage(file="Bookmark_Map_Main.png")
         self.L2=Label(window,width=500,height=250,image=Photo,bg='PaleTurquoise1')  #지도
-        self.L2.place(x=50,y=250)
+        self.L2.place(x=50,y=275)
         #----------------------------------------------------------------------------------
         self.l1=Label(window,width=70,height=7,bg='white')      #정보란
-        self.l1.place(x=50,y=120)
+        self.l1.place(x=50,y=135)
         #--------------------------------------------------------------------------------------------
         Email=PhotoImage(file='email_icon.png')
-        Button(window,command=self.sendMail,width=200,height=60,image=Email,bg='PaleTurquoise1').place(x=333,y=510) #메일 보내기 버튼
+        Button(window,command=self.sendMail,width=200,height=60,image=Email,bg='PaleTurquoise1').place(x=333,y=530) #메일 보내기 버튼
         self.e=Entry(self.window,width=30)
-        self.e.place(x=88,y=530)
+        self.e.place(x=88,y=565)
         #----------------------------------------------------
             # 검색 후 결과값을 출력하는 리스트 박스
         self.frame2=Frame(window,bg='white',width=400,height=100)
@@ -93,9 +93,9 @@ class BookMarkState:
             i+=1
         #--------------------------------------------------------
         Select = PhotoImage(file='select_icon.png')
-        Button(window, command=self.selectValue, width=80, height=40,image=Select,bg='PaleTurquoise1').place(x=435, y=15)  # 결과 선택 버튼
+        Button(window, command=self.selectValue, width=120, height=40,image=Select,bg='PaleTurquoise1').place(x=425, y=15)  # 결과 선택 버튼
         Bookmark = PhotoImage(file='rbookmark_icon.png')
-        Button(window, command=self.deleteList, width=100, height=40,image=Bookmark,bg='PaleTurquoise1').place(x=425, y=60)  # 즐겨찾기 버튼
+        Button(window, command=self.deleteList, width=120, height=40,image=Bookmark,bg='PaleTurquoise1').place(x=425, y=60)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):

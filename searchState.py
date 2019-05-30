@@ -186,9 +186,9 @@ class SearchState:
         self.start=True
 
         Serach = PhotoImage(file='search.png')
-        Button(window,command=self.searchA,width=120,height=30,image=Serach,bg='PaleTurquoise1').place(x=450,y=10)
+        Button(window,command=self.searchA,width=170,height=30,image=Serach,bg='PaleTurquoise1').place(x=430,y=5)
         Org_serach=PhotoImage(file='organic_search.png')
-        Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=45)
+        Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=40)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
         self.canvas.place(x=50,y=100)
@@ -217,9 +217,9 @@ class SearchState:
         self.scrollbar["command"]=self.listbox.yview
         #--------------------------------------------------------
         Select=PhotoImage(file='select_icon.png')
-        Button(window, command=self.selectValue, width=80, height=40,image=Select,bg='PaleTurquoise1').place(x=435, y=580)  # 선택 버튼
+        Button(window, command=self.selectValue, width=120, height=40,image=Select,bg='PaleTurquoise1').place(x=405, y=580)  # 선택 버튼
         Bookmark = PhotoImage(file='bookmark_icon.png')
-        Button(window, command=self.addList, width=100, height=40, image=Bookmark,bg='PaleTurquoise1').place(x=425, y=625)  # 즐겨찾기 버튼
+        Button(window, command=self.addList, width=120, height=40, image=Bookmark,bg='PaleTurquoise1').place(x=405, y=625)  # 즐겨찾기 버튼
         mainloop()
         framework.pop_state()
     def exit(self):
