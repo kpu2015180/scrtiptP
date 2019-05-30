@@ -198,8 +198,8 @@ class SearchState:
         self.l1.place(x=50,y=325)
 
         Photo = PhotoImage(file="Map_Main.png")
-        self.l2=Label(window,width=550,height=600,image=Photo,bg='PaleTurquoise1')      #지도
-        self.l2.place(x=620,y=25)
+        self.l2=Label(window,width=550,height=600,image=Photo,bg='white')      #지도
+        self.l2.place(x=630,y=25)
 
         Email = PhotoImage(file='email_icon.png')
         Button(window,command=self.sendMail,width=200,height=60,image=Email,bg='PaleTurquoise1').place(x=348,y=415) #메일 보내기 버튼
