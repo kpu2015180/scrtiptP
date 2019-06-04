@@ -18,12 +18,19 @@ bookMarkList=[]
 
 
 item_List=dict()
+Graph_dict={"경기도":0,"서울특별시":0,"부산광역시":0,"제주특별자치도":0,"인천광역시":0,"전라남도":0,"대전광역시":0,
+            "대구광역시":0,"경상북도":0,"경상남도":0,"울산광역시":0,"강원도":0,"충청남도":0,"전라북도":0,"충청북도":0
+            ,"광주광역시":0,"세종특별자치시":0}
 hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
 key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
 numOfRows = '&numOfRows=500'
 pageNo = '&pageNo='  #1~18 까지 가능
 type = '&type=xml'
 flag = '&flag=Y'
+
+#그래프 값 받고 0으로
+
+
 for i in range(1,2):
     url = hp + key + pageNo + str(i) + type + numOfRows + flag
     response = requests.get(url)
@@ -44,6 +51,7 @@ for i in range(1,2):
                 item_List[t1][t2][t3] = list()
             item_List[t1][t2][t3].append(Shelter(item.find('sisul_rddr').text, item.find('sisul_addr').text, item.find('facility_name').text,
                                                     item.find('longitude').text, item.find('latitude').text))
+            Graph_dict[t1] += 1
 
 
 

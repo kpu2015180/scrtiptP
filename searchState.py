@@ -148,6 +148,8 @@ class SearchState:
                     self.canvas.create_text(15 + s * barw+barw//2, 5 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) /max) + 10,
                                             text=i+"\n"+str(len(framework.item_List[s1][s2][i])), tags="grim")
                     s+=1
+
+
                 pass
 
         pass
