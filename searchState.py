@@ -172,9 +172,7 @@ class SearchState:
         self.c3.set("읍/면/동")
 
         self.e1=Entry(window,width=50)    #직접 검색란
-
-
-        self.e1.place(x=70,y=55)
+        self.e1.place(x=70,y=50)
         self.start=True
 
         Serach = PhotoImage(file='search.png')
