@@ -188,12 +188,12 @@ class SearchState:
         maxCount = int(max(Graph_list))
         barW=int(500/17)
         for i in range(17):
-            self.canvas.create_rectangle(10 + i * barW,190 - ((190-20) * Graph_list[i]/maxCount),10 + (i+1) * barW, 190, tags="grim")
+            self.canvas.create_rectangle(10 + i * barW,190 - ((190-20) * Graph_list[i]/maxCount),10 + (i+1) * barW, 190,fill="PaleTurquoise1" ,tags="grim")
             self.canvas.create_text(25 + i * barW,10,text=Graph_list[i],tags="grim")
         for i in range(17):
             Name =str(Graph_name[i])
             for j in range(len(Name)):
-                self.canvas.create_text(25 + i * barW, 30+(j*13), text=Name[j],tags="grim")
+                self.canvas.create_text(25 + i * barW, 30+(j*20), text=Name[j],font=("Gothic",15),tags="grim")
         self.canvas.place(x=50,y=100)
 
         #----------------------------------------------------------------------------------
