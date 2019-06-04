@@ -184,6 +184,8 @@ class SearchState:
         self.c3.set("읍/면/동")
 
         self.e1=Entry(window,width=50)    #직접 검색란
+
+
         self.e1.place(x=70,y=55)
         self.start=True
 
@@ -193,6 +195,14 @@ class SearchState:
         Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=40)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
+        Graph_list=list(framework.Graph_dict.values())
+        Graph_name=list(framework.Graph_dict.keys())
+        maxCount = int(max(Graph_list))
+        barW=int(500/17)
+        for i in range(17):
+            self.canvas.create_rectangle(10 + i * barW,190 - ((190-20) * Graph_list[i]/maxCount),10 + (i+1) * barW, 190, tags="grim")
+            self.canvas.create_text(25 + i * barW,10,text=Graph_list[i],tags="grim")
+        self.canvas.create_text(25, 30, text="서",tags="grim")
         self.canvas.place(x=50,y=100)
 
         #----------------------------------------------------------------------------------
