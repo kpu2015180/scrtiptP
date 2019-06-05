@@ -53,34 +53,45 @@ class readyTeleGram:
 
         text = msg['text']
         args = text.split(' ')
-
-        if len(args) == 0:
-            return
+        print_cheak=False
+        #if len(args) == 0:
+            #return
 
         if len(args) == 3:
             if args[0] in framework.item_List.keys():
                 if args[1] in framework.item_List[args[0]].keys():
                     if args[2] in framework.item_List[args[0]][args[1]].keys():
                         for i in framework.item_List[args[0]][args[1]][args[2]]:
-                            noti.sendMessage(chat_id, '{0}'.format(i.rddr))
+                            map = 'https://www.google.com/search?q={0}+{1}&oq={0}+{1}&aqs=chrome..69i57.341j0j9&sourceid=chrome&ie=UTF-8'.format(
+                                i.latitude, i.longtitude)
+                            noti.sendMessage(chat_id, '{0}\n{1}\n{2}\n'.format(i.facility_name, i.rddr, map))
+                            print_cheak = True
         elif len(args) == 1:
             if args[0] in framework.item_List.keys():
                 for i in framework.item_List[args[0]].keys():
                     for j in framework.item_List[args[0]][i].keys():
                         for k in framework.item_List[args[0]][i][j]:
-                            noti.sendMessage(chat_id, '{0}'.format(i.rddr))
+                            map = 'https://www.google.com/search?q={0}+{1}&oq={0}+{1}&aqs=chrome..69i57.341j0j9&sourceid=chrome&ie=UTF-8'.format(k.latitude,k.longtitude)
+                            noti.sendMessage(chat_id, '{0}\n{1}\n{2}\n'.format(k.facility_name,k.rddr,map))
+                            print_cheak = True
 
         elif len(args) == 2:
             if args[0] in framework.item_List.keys():
                 if args[1] in framework.item_List[args[0]].keys():
                     for i in framework.item_List[args[0]][args[1]].keys():
                         for j in framework.item_List[args[0]][args[1]][i]:
-                            noti.sendMessage(chat_id, '{0}'.format(i.rddr))
-        else:
-            noti.sendMessage(chat_id, '모르는 명령어입니다.\n시/도 구 동을 입력하세요.')
+                            map = 'https://www.google.com/search?q={0}+{1}&oq={0}+{1}&aqs=chrome..69i57.341j0j9&sourceid=chrome&ie=UTF-8'.format(
+                                j.latitude, j.longtitude)
+                            noti.sendMessage(chat_id, '{0}\n{1}\n{2}\n'.format(j.facility_name, j.rddr, map))
+                            print_cheak=True
+
+        if(print_cheak==False):
+            noti.sendMessage(chat_id, '없는 지역입니다.\n시/도 구 동을 입력하세요.')
 
 
-        noti.sendMessage(chat_id, '대피소를 찾는중입니다.')
+        elif(print_cheak==True):
+            noti.sendMessage(chat_id, "찾은 대피소를 출력하였습니다.")
+            print_cheak=False
 
 
 
