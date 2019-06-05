@@ -3,7 +3,7 @@ import framework
 import searchState
 import bookMarkState
 import pickle
-
+import teleGram
 class StartState:
     def goSearchState(self):
         self.window.destroy()
@@ -12,7 +12,9 @@ class StartState:
     def goBookMarkState(self):
         self.window.destroy()
         framework.push_state(bookMarkState.BookMarkState())
-
+    def TeleGramState(self):
+        self.window.destroy()
+        framework.push_state(teleGram.readyTeleGram())
         pass
     def __init__(self):
 
@@ -51,6 +53,8 @@ class StartState:
         BookmarkStart = PhotoImage(file='bookmark_Start.png')
         d = Button(label, text="즐겨찾기", command=self.goBookMarkState,width=120,height=40,image=BookmarkStart)
         d.place(x=85, y=250)
+        tb=Button(label,text="텔레그렘",command=self.TeleGramState)
+        tb.place(x=85,y=170)
         mainloop()
         framework.quit()
     def exit(self):
