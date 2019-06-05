@@ -135,19 +135,9 @@ class SearchState:
                 s1=self.str1.get()
                 s2=self.str2.get()
                 #width= 500 height=190
-                self.canvas.delete("grim")
-                size=len(framework.item_List[s1][s2])
-                barw=(500-20)/size
-                max=0
-                for i in framework.item_List[s1][s2].keys():
-                    if max< len(framework.item_List[s1][s2][i]):
-                        max=len(framework.item_List[s1][s2][i])
-                s=0
-                for i in framework.item_List[s1][s2].keys():
-                    self.canvas.create_rectangle(10 + s * barw,10 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) / max) + 10,10 + s * barw + barw, 190 , tags="grim")
-                    self.canvas.create_text(15 + s * barw+barw//2, 5 + (190 - 20) * (1 - len(framework.item_List[s1][s2][i]) /max) + 10,
-                                            text=i+"\n"+str(len(framework.item_List[s1][s2][i])), tags="grim")
-                    s+=1
+
+
+
                 pass
 
         pass
@@ -182,7 +172,7 @@ class SearchState:
         self.c3.set("읍/면/동")
 
         self.e1=Entry(window,width=50)    #직접 검색란
-        self.e1.place(x=70,y=55)
+        self.e1.place(x=70,y=50)
         self.start=True
 
         Serach = PhotoImage(file='search.png')
@@ -191,6 +181,17 @@ class SearchState:
         Button(window, command=self.searchD,width=170,height=30,image=Org_serach,bg='PaleTurquoise1').place(x=430, y=40)
 
         self.canvas=Canvas(window,width=500,height=190,bg='white') #막대 그래프 그릴 프레입
+        Graph_list=list(framework.Graph_dict.values())
+        Graph_name=list(framework.Graph_dict.keys())
+        maxCount = int(max(Graph_list))
+        barW=int(500/17)
+        for i in range(17):
+            self.canvas.create_rectangle(10 + i * barW,190 - ((190-20) * Graph_list[i]/maxCount),10 + (i+1) * barW, 190,fill="PaleTurquoise1" ,tags="grim")
+            self.canvas.create_text(25 + i * barW,10,text=Graph_list[i],tags="grim")
+        for i in range(17):
+            Name =str(Graph_name[i])
+            for j in range(len(Name)):
+                self.canvas.create_text(25 + i * barW, 30+(j*20), text=Name[j],font=("Gothic",15),tags="grim")
         self.canvas.place(x=50,y=100)
 
         #----------------------------------------------------------------------------------

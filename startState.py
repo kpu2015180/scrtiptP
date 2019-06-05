@@ -3,7 +3,7 @@ import framework
 import searchState
 import bookMarkState
 import pickle
-
+import teleGram
 class StartState:
     def goSearchState(self):
         self.window.destroy()
@@ -12,7 +12,9 @@ class StartState:
     def goBookMarkState(self):
         self.window.destroy()
         framework.push_state(bookMarkState.BookMarkState())
-
+    def TeleGramState(self):
+        self.window.destroy()
+        framework.push_state(teleGram.readyTeleGram())
         pass
     def __init__(self):
 
@@ -49,8 +51,11 @@ class StartState:
         b = Button(label,command=self.goSearchState ,width=100,height=40,image=Start)
         b.place(x=95, y=60)
         BookmarkStart = PhotoImage(file='bookmark_Start.png')
-        d = Button(label, text="즐겨찾기", command=self.goBookMarkState,width=120,height=40,image=BookmarkStart)
-        d.place(x=85, y=250)
+        d = Button(label, text="즐겨찾기", command=self.goBookMarkState,width=140,height=40,image=BookmarkStart)
+        d.place(x=0, y=250)
+        TelegramStart = PhotoImage(file='Telegram_icon.png')
+        tb=Button(label,text="텔레그렘",command=self.TeleGramState,width=145,height=40,image=TelegramStart)
+        tb.place(x=145,y=250)
         mainloop()
         framework.quit()
     def exit(self):
