@@ -28,10 +28,13 @@ class readyTeleGram:
         self.window = Tk()
         self.window.title('원 터치 벙커')
         self.window.geometry('300x300' )
-        today = date.today()
-        current_month = today.strftime('%Y%m')
 
-        print('[', today, ']received token :', noti.TOKEN)
+        label = Label(self.window,bg='white')
+        label.img = PhotoImage(file='Telegram_Main.png')
+        label.config(image=label.img, compound='bottom')
+        label.pack()
+
+
 
         bot = telepot.Bot(noti.TOKEN)
         pprint(bot.getMe())
