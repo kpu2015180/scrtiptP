@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pickle
-
+import spam
 class Shelter:
     def __init__(self,rddr,addr,fName,longtitude,latitude):
         self.rddr=rddr
@@ -22,7 +22,7 @@ Graph_dict={"경기도":0,"서울특별시":0,"부산광역시":0,"제주특별�
             "대구광역시":0,"경상북도":0,"경상남도":0,"울산광역시":0,"강원도":0,"충청남도":0,"전라북도":0,"충청북도":0
             ,"광주광역시":0,"세종특별자치시":0}
 hp = 'http://apis.data.go.kr/1741000/CivilDefenseShelter2/getCivilDefenseShelterList?ServiceKey='
-key = '7kFbpf%2FOn4bEVGtr6DnsLs5DEx6AUme9vmgM57bnM18GtwgQgxtIOhtSuZfl%2FAVo1iHH76tjDOR%2FuvRryGOj%2FA%3D%3D'
+key = spam.getkey()
 numOfRows = '&numOfRows=1000'
 pageNo = '&pageNo='  #1~18 까지 가능
 type = '&type=xml'
